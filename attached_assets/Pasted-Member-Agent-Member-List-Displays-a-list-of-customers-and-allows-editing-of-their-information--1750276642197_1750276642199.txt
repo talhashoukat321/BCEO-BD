@@ -1,0 +1,65 @@
+Member Agent 
+● Member List: Displays a list of customers and allows editing of their information. 
+● Digital Wallet: Shows the customer's digital wallet details. 
+● Bank Wallet: Displays the customer's bank account details. 
+News & Announcements 
+● Section to share important updates or announcements with users. 
+Report Management 
+● Deposit and Withdraw Reports: Shows reports of all customer deposits and 
+withdrawals. 
+Money Management 
+● Recharge List: Displays customer recharge transactions (Note: Recharge is 
+optional and not required by the client). 
+● Withdraw List: Manages customer withdrawal requests. 
+● Funding Details: Displays money transactions, including profit and loss. 
+Order Management 
+● Betting Orders: Shows tasks/orders added by customers through the app. 
+These are functions of software by customer 
+Member List 
+● Send Announcements: Send news or announcements and track related tasks. 
+● Edit Information: Modify customer details. 
+○ Reputation: A score from 0 to 100. Deducted when a customer makes a 
+mistake; increased when they complete tasks successfully. Displayed alongside 
+customer IDs. 
+○ Win or Lose: Dropdown options: “To Win,” “To Lose,” and “Random.” Default 
+should be set to “To Win.” 
+■ To Win: Used when the customer’s task wins. 
+■ To Lose: Used when the customer’s task fails. 
+■ Random: 50/50 chance. 
+○ Direction: Dropdown options: “Buy Up,” “Buy the Dip,” and “Actual.” This setting 
+affects reward calculation—either the actual reward or 50% of it. 
+○ Ban: Dropdown options: “Prohibit” and “Can’t Help.” Selecting Prohibit will ban 
+the customer’s account. 
+○ Withdrawal: Dropdown options: “Prohibit” and “Can’t Help.” Selecting Prohibit 
+will disable the customer’s withdrawal functionality. 
+● Deposit: Click to add an amount; it updates both the front-end balance and the back
+end “Balance/Freeze” columns. 
+● Deductions: Enter an amount to refund a customer; the refund appears in both the app 
+and the back end. 
+● Freeze: Enter an amount to freeze it on the customer’s account. 
+● Unfreeze (Throw): Use this feature to release previously frozen funds. 
+● Login Password: Edit the customer’s login password. 
+● Fund Password: Used when processing withdrawals; editable here and can also be set 
+during registration. 
+● Status: Toggle on/off to grant or revoke the customer’s account access. 
+● Invitation Code: The code used when adding someone to your team as an 
+administrator. 
+Withdraw List 
+When a customer applies for a withdrawal, the request appears here. You can Accept or 
+Reject each application, and the app will update accordingly. 
+Betting Order 
+Displays tasks that customers submit with timing parameters. From here you can: 
+● Adjust Position 
+○ Position: Dropdown options of 30 s, 60 s, 120 s, 180 s, and 240 s. 
+○ Building Cycle: Change the position setting with one click. 
+○ Cancellation Processing: Cancel a customer’s task. 
+○ Adjust Direction: Instantly update the task’s direction to match the setting from 
+the Member List. 
+Digital Wallet 
+(Optional) Manage customers’ in-app wallet balances. 
+Bank Wallet 
+(Required) Collect and display the customer’s bank details: 
+● Account Holder Name 
+● Account Number 
+● Bank Name 
+● IFSC Code 

@@ -1,0 +1,64 @@
+Cryptocurrency Trading Interface
+Create a single-page web application on Replit using HTML, CSS, and JavaScript that precisely replicates the visual design of the provided screenshot of a cryptocurrency trading interface. The goal is an exact, pixel-perfect match for all elements, colors, fonts, spacing, and layout.
+
+Specific Requirements:
+Overall Layout:
+
+The page should have a dark theme, matching the screenshot's black/dark gray background.
+
+The main sections include a header, a statistics/overview bar, a charting area, and a recent trades/order book section.
+
+Header Section:
+
+"BTC/USDT" text in the top left.
+
+A menu icon (three horizontal lines) next to "BTC/USDT".
+
+A "Spot Orders" button in the top right with a small arrow icon.
+
+Statistics/Overview Bar:
+
+Displays key metrics like "115123.8862" and "-2.64%" (red text for negative percentage).
+
+Shows "24H High", "24H Low", "24H Volume", and "24H Turnover" with their respective values, maintaining the same font size and color.
+
+Charting Area:
+
+Replicate the candlestick chart with green and red candles as shown.
+
+Include the moving average lines (orange and teal).
+
+The timeframe selector (1M, 5M, 30M, 1H, 4H, 1D) with "5M" highlighted in blue.
+
+The "Chart by TradingView" text in the bottom left of the chart area.
+
+The volume bars at the bottom of the chart, matching colors with the candles.
+
+The vertical and horizontal grid lines and axis labels.
+
+The horizontal white line across the chart, representing a price level.
+
+Recent Trades/Order Book Section (Bottom Panel):
+
+A table-like structure with columns: "Time", "Direction", "Price", "Quantity".
+
+Mimic the green "Buy" and red "Sell" indicators.
+
+Display the "Buy Up" and "Buy down" buttons with their respective colors (green and red) in the bottom left and right.
+
+Technical Implementation Notes:
+HTML Structure: Use semantic HTML5 elements for clear structure.
+
+CSS Styling:
+
+Use CSS Grid or Flexbox for overall layout and responsive design.
+
+Precisely match colors, font families (if identifiable, otherwise a standard sans-serif), font sizes, padding, and margins as seen in the screenshot.
+
+Ensure all borders, shadows, and rounded corners are identical.
+
+For the chart, you can use a placeholder image or a simple canvas element with static lines and shapes to visually represent the chart, as recreating a fully functional dynamic trading chart is complex and not the primary goal here; the focus is on the design replication.
+
+JavaScript: Primarily for any minimal interactive elements like button clicks (though functionality is secondary to design).
+
+No external libraries or frameworks beyond what's absolutely necessary for basic styling (e.g., no React, Vue, Angular unless explicitly simpler for exact replication of a specific component's visual style, which is unlikely for this prompt). Plain HTML, CSS, and vanilla JavaScript.

@@ -1,0 +1,56 @@
+Make a Cutomer Service Page exactly shown in the image above. 
+
+
+ 
+
+Create Crypto Single Page design just like the image shown above. When I click on the crypto currency it should navigate to the related crypto currency page. Titles should be according to the crypto currency, Prices and Percentages should be according to the real time marketplace data. All data should be dynamic and according to their realtime cryto marketplace data. 
+
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div id="tradingview_abcdef"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+    new TradingView.widget({
+      "autosize": true,
+      "symbol": "NASDAQ:AAPL",
+      "interval": "D",
+      "theme": "light",
+      "style": "1",
+      "locale": "en",
+      "toolbar_bg": "#f1f3f6",
+      "enable_publishing": false,
+      "hide_side_toolbar": false,
+      "container_id": "tradingview_abcdef"
+    });
+  </script>
+</div>
+<!-- TradingView Widget END -->
+
+Add this Trading View API in the Graph section of the crypto currencies single pages
+
+ 
+
+When I click on the Buy Up Button It should be just like the Buy Up section shown in the image.. Design will be the exactly as shown in the image.
+
+ 
+
+When I click on the Buy Down Button It should be just like the Buy Up section shown in the image.. Design will be the exactly as shown in the image.
+
+
+ 
+
+<div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:153:6" data-component-name="div" class="bg-white px-4 py-6 border-b border-gray-200"><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:154:8" data-component-name="div" class="flex justify-between space-x-4"><a data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:155:10" data-component-name="Link" href="/recharge" class="flex-1"><button data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:156:12" data-component-name="Button" class="gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground px-4 py-2 w-full h-16 flex flex-col items-center justify-center space-y-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw w-6 h-6 text-gray-600" data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:157:14" data-component-name="RotateCcw"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:158:14" data-component-name="span" class="text-xs text-gray-600">Recharge</span></button></a><a data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:162:10" data-component-name="Link" href="/withdrawal" class="flex-1"><button data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:163:12" data-component-name="Button" class="gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground px-4 py-2 w-full h-16 flex flex-col items-center justify-center space-y-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card w-6 h-6 text-gray-600" data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:164:14" data-component-name="CreditCard"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg><span data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:165:14" data-component-name="span" class="text-xs text-gray-600">Withdrawal</span></button></a><a data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:169:10" data-component-name="Link" href="/customer-service" class="flex-1"><button data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:170:12" data-component-name="Button" class="gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground px-4 py-2 w-full h-16 flex flex-col items-center justify-center space-y-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones w-6 h-6 text-gray-600" data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:171:14" data-component-name="Headphones"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></svg><span data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:172:14" data-component-name="span" class="text-xs text-gray-600">Customer Service</span></button></a></div></div>
+
+Make this section exacly as shown in the image above... Add same images in this section. Remove padding.
+
+When I click on the Recharge Button of the Home Tab. Then click on the Top-up Record it should be empty for now... The record should be visible in the Withdrawal Record Section instead of Top-up Record section and make changes according to withdrawal record section. 
+
+<div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:140:6" data-component-name="div" class="bg-white border-b border-gray-200 px-4 py-3"><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:141:8" data-component-name="div" class="flex justify-between space-x-4"><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:143:10" data-component-name="div" class="text-center flex-1"><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:144:14" data-component-name="div" class="text-xs font-medium text-gray-900">BTC/USDT</div><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:145:14" data-component-name="div" class="text-sm font-bold text-red-600">115325</div><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:146:14" data-component-name="div" class="text-xs text-red-600">-2.31%</div></div><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:143:10" data-component-name="div" class="text-center flex-1"><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:144:14" data-component-name="div" class="text-xs font-medium text-gray-900">ETH/USDT</div><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:145:14" data-component-name="div" class="text-sm font-bold text-red-600">4280</div><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:146:14" data-component-name="div" class="text-xs text-red-600">-4.37%</div></div><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:143:10" data-component-name="div" class="text-center flex-1"><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:144:14" data-component-name="div" class="text-xs font-medium text-gray-900">DOGE/USDT</div><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:145:14" data-component-name="div" class="text-sm font-bold text-red-600">0.2228</div><div data-replit-metadata="client/src/components/customer/crypto-marketplace.tsx:146:14" data-component-name="div" class="text-xs text-red-600">-4.66%</div></div></div></div>
+
+When I click on the crypto currency sections of the above code. It should navigate to the related crypto currency page. 
+
+ 
+
+Make withdrwal section like above image. 
+ 
+When I Click on the BDT section it should be open popup from bottm and the design of the popup should be like this image shown above. When I click on the WithDrwal Record it should navigate to the Withdrwal Record tab instead of Top-up Record.

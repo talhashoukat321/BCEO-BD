@@ -1,0 +1,63 @@
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a2332;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2d3748;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a202c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="200" fill="url(#bgGradient)" rx="12"/>
+  
+  <!-- Grid pattern overlay -->
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#374151" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="200" fill="url(#grid)" rx="12"/>
+  
+  <!-- Currency rows -->
+  <!-- Bitcoin row -->
+  <g transform="translate(40, 30)">
+    <text x="0" y="20" fill="#f59e0b" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Bitcoin</text>
+    <text x="600" y="20" fill="#22c55e" font-family="Arial, sans-serif" font-size="16" font-weight="bold">▲ +12.8%</text>
+    <text x="700" y="20" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="16">$42,150</text>
+  </g>
+  
+  <!-- Ethereum row -->
+  <g transform="translate(40, 70)">
+    <text x="0" y="20" fill="#3b82f6" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Ethereum</text>
+    <text x="600" y="20" fill="#22c55e" font-family="Arial, sans-serif" font-size="16" font-weight="bold">▲ +8.4%</text>
+    <text x="700" y="20" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="16">$2,850</text>
+  </g>
+  
+  <!-- Ripple row -->
+  <g transform="translate(40, 110)">
+    <text x="0" y="20" fill="#6366f1" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Ripple</text>
+    <text x="600" y="20" fill="#ef4444" font-family="Arial, sans-serif" font-size="16" font-weight="bold">▼ -2.1%</text>
+    <text x="700" y="20" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="16">$1.89</text>
+  </g>
+  
+  <!-- Solana row -->
+  <g transform="translate(40, 150)">
+    <text x="0" y="20" fill="#8b5cf6" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Solana</text>
+    <text x="600" y="20" fill="#22c55e" font-family="Arial, sans-serif" font-size="16" font-weight="bold">▲ +5.2%</text>
+    <text x="700" y="20" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="16">$215.67</text>
+  </g>
+  
+  <!-- Trend line -->
+  <path d="M 450 160 Q 500 140 550 120 Q 600 100 650 80 Q 700 60 750 40" 
+        stroke="url(#greenGradient)" 
+        stroke-width="3" 
+        fill="none" 
+        opacity="0.8"/>
+  
+  <!-- Arrow -->
+  <path d="M 740 45 L 750 40 L 745 50 Z" fill="#22c55e"/>
+</svg>

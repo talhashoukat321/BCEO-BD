@@ -1,0 +1,19 @@
+{
+    "name": "supercoin/php-backend",
+    "description": "SuperCoin PHP Backend - Cryptocurrency Investment Platform",
+    "type": "project",
+    "require": {
+        "php": ">=8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SuperCoin\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "scripts": {
+        "serve": "php -S localhost:5000 index.php"
+    }
+}

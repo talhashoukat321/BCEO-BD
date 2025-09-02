@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTC/USDT - Cryptocurrency Trading Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0e1a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background-color: #1a1f2e;
+            border-bottom: 1px solid #2a3040;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pair-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .menu-icon {
+            width: 14px;
+            height: 14px;
+            background-image: linear-gradient(to right, #ccc 0%, #ccc 100%);
+            position: relative;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 2px;
+            background-color: #ccc;
+        }
+
+        .menu-icon::before {
+            top: -4px;
+        }
+
+        .menu-icon::after {
+            top: 4px;
+        }
+
+        .spot-orders {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #64b5f6;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* Price Section */
+        .price-section {
+            padding: 16px;
+            background-color: #0a0e1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .price-left {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .main-price {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ef5350;
+            margin-bottom: 4px;
+        }
+
+        .price-change {
+            font-size: 14px;
+            color: #ef5350;
+        }
+
+        .price-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 12px;
+            color: #9e9e9e;
+        }
+
+        .price-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 12px;
+            color: #9e9e9e;
+            text-align: right;
+        }
+
+        /* Timeframe Selector */
+        .timeframe-selector {
+            padding: 0 16px 16px;
+            display: flex;
+            gap: 2px;
+        }
+
+        .timeframe-btn {
+            padding: 6px 12px;
+            background-color: transparent;
+            border: none;
+            color: #9e9e9e;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .timeframe-btn.active {
+            background-color: #1976d2;
+            color: white;
+        }
+
+        .timeframe-btn:hover:not(.active) {
+            background-color: #2a3040;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            flex: 1;
+            position: relative;
+            margin: 0 16px;
+            background-color: #0a0e1a;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .chart-canvas {
+            width: 100%;
+            height: 400px;
+            display: block;
+        }
+
+        .chart-branding {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #64b5f6;
+        }
+
+        .chart-logo {
+            width: 12px;
+            height: 12px;
+            background-color: #64b5f6;
+            border-radius: 50%;
+        }
+
+        /* Price Labels on Chart */
+        .price-labels {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            display: flex;
+            gap: 16px;
+            font-size: 11px;
+            font-family: monospace;
+        }
+
+        .price-label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .price-label .label {
+            color: #9e9e9e;
+        }
+
+        .price-label .value {
+            color: white;
+        }
+
+        /* Trading Table */
+        .trading-table {
+            margin: 16px;
+            background-color: #1a1f2e;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 16px;
+            padding: 12px 16px;
+            background-color: #2a3040;
+            border-bottom: 1px solid #3a4050;
+            font-size: 12px;
+            color: #9e9e9e;
+            font-weight: 500;
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 16px;
+            padding: 8px 16px;
+            font-size: 12px;
+            border-bottom: 1px solid #2a3040;
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .time-col {
+            color: #9e9e9e;
+            font-family: monospace;
+        }
+
+        .direction-col.buy {
+            color: #26a69a;
+            font-weight: 500;
+        }
+
+        .direction-col.sell {
+            color: #ef5350;
+            font-weight: 500;
+        }
+
+        .price-col {
+            color: white;
+            font-family: monospace;
+        }
+
+        .quantity-col {
+            color: #9e9e9e;
+            font-family: monospace;
+        }
+
+        /* Bottom Buttons */
+        .bottom-buttons {
+            display: flex;
+            gap: 16px;
+            padding: 16px;
+        }
+
+        .trade-btn {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .buy-btn {
+            background-color: #26a69a;
+            color: white;
+        }
+
+        .buy-btn:hover {
+            background-color: #00796b;
+        }
+
+        .sell-btn {
+            background-color: #ef5350;
+            color: white;
+        }
+
+        .sell-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Volume Stats */
+        .volume-stats {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 11px;
+            color: #9e9e9e;
+            text-align: right;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .price-section {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .price-left {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .timeframe-selector {
+                overflow-x: auto;
+            }
+
+            .table-header,
+            .table-row {
+                font-size: 10px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <span class="pair-name">BTC/USDT</span>
+                <div class="menu-icon"></div>
+            </div>
+            <div class="spot-orders">
+                <span>Spot Orders</span>
+                <span>›</span>
+            </div>
+        </div>
+
+        <!-- Price Section -->
+        <div class="price-section">
+            <div class="price-left">
+                <div class="main-price">
+                    <div class="price-value">115123.8862</div>
+                    <div class="price-change">-2.64%</div>
+                </div>
+                <div class="price-stats">
+                    <div>24H High: 118395.3500</div>
+                    <div>24H Low: 115123.8862</div>
+                </div>
+            </div>
+            <div class="price-right">
+                <div>24H Volume: 181.13M</div>
+                <div>24H Turnover: 1.56K</div>
+            </div>
+        </div>
+
+        <!-- Timeframe Selector -->
+        <div class="timeframe-selector">
+            <button class="timeframe-btn">1M</button>
+            <button class="timeframe-btn active">5M</button>
+            <button class="timeframe-btn">30M</button>
+            <button class="timeframe-btn">1H</button>
+            <button class="timeframe-btn">4H</button>
+            <button class="timeframe-btn">1D</button>
+        </div>
+
+        <!-- Chart Container -->
+        <div class="chart-container">
+            <canvas class="chart-canvas" id="tradingChart"></canvas>
+            
+            <!-- Price Labels Overlay -->
+            <div class="price-labels">
+                <div class="price-label">
+                    <span class="label">O</span>
+                    <span class="value">117498.01</span>
+                </div>
+                <div class="price-label">
+                    <span class="label">H</span>
+                    <span class="value">117565.00</span>
+                </div>
+                <div class="price-label">
+                    <span class="label">L</span>
+                    <span class="value">117399.99</span>
+                </div>
+            </div>
+
+            <!-- Volume Stats -->
+            <div class="volume-stats">
+                <div>115123.8862</div>
+            </div>
+
+            <!-- Chart Branding -->
+            <div class="chart-branding">
+                <div class="chart-logo"></div>
+                <span>Chart by TradingView</span>
+            </div>
+        </div>
+
+        <!-- Trading Table -->
+        <div class="trading-table">
+            <div class="table-header">
+                <div>Time</div>
+                <div>Direction</div>
+                <div>Price</div>
+                <div>Quantity</div>
+            </div>
+            <div class="table-row">
+                <div class="time-col">15:39:05</div>
+                <div class="direction-col buy">Buy</div>
+                <div class="price-col">115103.9200</div>
+                <div class="quantity-col">0.0003</div>
+            </div>
+            <div class="table-row">
+                <div class="time-col">15:39:04</div>
+                <div class="direction-col sell">Sell</div>
+                <div class="price-col">115103.00</div>
+                <div class="quantity-col">0.0002</div>
+            </div>
+        </div>
+
+        <!-- Bottom Buttons -->
+        <div class="bottom-buttons">
+            <button class="trade-btn buy-btn">Buy Up</button>
+            <button class="trade-btn sell-btn">Buy down</button>
+        </div>
+    </div>
+
+    <script>
+        // Chart Drawing Logic
+        function drawChart() {
+            const canvas = document.getElementById('tradingChart');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size for high DPI
+            const rect = canvas.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = rect.height + 'px';
+
+            // Clear canvas with dark background
+            ctx.fillStyle = '#0a0e1a';
+            ctx.fillRect(0, 0, rect.width, rect.height);
+
+            // Draw grid lines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 0.5;
+            
+            // Vertical grid lines
+            for (let i = 0; i <= 10; i++) {
+                const x = (rect.width / 10) * i;
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, rect.height * 0.8);
+                ctx.stroke();
+            }
+
+            // Horizontal grid lines
+            for (let i = 0; i <= 6; i++) {
+                const y = (rect.height * 0.8 / 6) * i;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(rect.width, y);
+                ctx.stroke();
+            }
+
+            // Draw candlesticks
+            const candleCount = 60;
+            const candleWidth = rect.width / candleCount;
+            const chartHeight = rect.height * 0.8;
+            let lastClose = 117000;
+
+            for (let i = 0; i < candleCount; i++) {
+                const x = i * candleWidth;
+                
+                // Generate realistic price data
+                const trend = Math.sin(i * 0.05) * 300 - (i * 20); // Downward trend
+                const volatility = (Math.random() - 0.5) * 200;
+                const open = lastClose + (Math.random() - 0.5) * 50;
+                const close = open + trend + volatility;
+                const high = Math.max(open, close) + Math.random() * 150;
+                const low = Math.min(open, close) - Math.random() * 150;
+                
+                lastClose = close;
+                
+                const isGreen = close > open;
+                
+                // Convert to screen coordinates
+                const priceRange = 4000;
+                const basePrice = 117000;
+                const highY = chartHeight - ((high - (basePrice - priceRange/2)) / priceRange) * chartHeight;
+                const lowY = chartHeight - ((low - (basePrice - priceRange/2)) / priceRange) * chartHeight;
+                const openY = chartHeight - ((open - (basePrice - priceRange/2)) / priceRange) * chartHeight;
+                const closeY = chartHeight - ((close - (basePrice - priceRange/2)) / priceRange) * chartHeight;
+
+                // Draw wick
+                ctx.strokeStyle = isGreen ? '#26a69a' : '#ef5350';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(x + candleWidth/2, highY);
+                ctx.lineTo(x + candleWidth/2, lowY);
+                ctx.stroke();
+
+                // Draw body
+                ctx.fillStyle = isGreen ? '#26a69a' : '#ef5350';
+                const bodyHeight = Math.abs(closeY - openY);
+                const bodyY = Math.min(openY, closeY);
+                ctx.fillRect(x + 1, bodyY, candleWidth - 2, bodyHeight || 1);
+            }
+
+            // Draw moving averages
+            ctx.lineWidth = 2;
+            
+            // Orange MA
+            ctx.strokeStyle = '#ff9800';
+            ctx.beginPath();
+            for (let i = 0; i < candleCount; i++) {
+                const x = i * candleWidth + candleWidth/2;
+                const price = 116800 - (i * 15) + Math.sin(i * 0.1) * 100;
+                const y = chartHeight - ((price - 114000) / 4000) * chartHeight;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // Teal MA
+            ctx.strokeStyle = '#26a69a';
+            ctx.beginPath();
+            for (let i = 0; i < candleCount; i++) {
+                const x = i * candleWidth + candleWidth/2;
+                const price = 116600 - (i * 18) + Math.sin(i * 0.08) * 120;
+                const y = chartHeight - ((price - 114000) / 4000) * chartHeight;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // Draw horizontal price line
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([5, 5]);
+            const priceLineY = chartHeight * 0.7;
+            ctx.beginPath();
+            ctx.moveTo(0, priceLineY);
+            ctx.lineTo(rect.width, priceLineY);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Draw volume bars
+            const volumeHeight = rect.height * 0.15;
+            const volumeStartY = rect.height * 0.85;
+            
+            for (let i = 0; i < candleCount; i++) {
+                const x = i * candleWidth;
+                const barHeight = Math.random() * volumeHeight;
+                const y = volumeStartY + (volumeHeight - barHeight);
+                
+                const isGreenVolume = Math.random() > 0.5;
+                ctx.fillStyle = isGreenVolume 
+                    ? 'rgba(38, 166, 154, 0.6)' 
+                    : 'rgba(239, 83, 80, 0.6)';
+                ctx.fillRect(x + 1, y, candleWidth - 2, barHeight);
+            }
+
+            // Draw time labels
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.font = '10px monospace';
+            ctx.textAlign = 'center';
+            const timeLabels = ['22:30', '01:30', '03:00', '04:30', '06:00', '2025-08-18 07:56:00', '09:30', '12:00', '13:30', '15:00', '16:30', '18:00'];
+            for (let i = 0; i < timeLabels.length; i++) {
+                const x = (rect.width / (timeLabels.length - 1)) * i;
+                ctx.fillText(timeLabels[i], x, rect.height - 5);
+            }
+        }
+
+        // Interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            drawChart();
+            
+            // Timeframe button interactions
+            const timeframeButtons = document.querySelectorAll('.timeframe-btn');
+            timeframeButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    timeframeButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    drawChart(); // Redraw chart for new timeframe
+                });
+            });
+
+            // Trade button interactions
+            document.querySelector('.buy-btn').addEventListener('click', function() {
+                alert('Buy Up clicked - would execute buy order');
+            });
+
+            document.querySelector('.sell-btn').addEventListener('click', function() {
+                alert('Buy Down clicked - would execute sell order');
+            });
+        });
+
+        // Responsive chart redraw
+        window.addEventListener('resize', drawChart);
+    </script>
+</body>
+</html>
